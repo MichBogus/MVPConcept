@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+    defaultConfig {
+        applicationId "com.mvpconcept"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets {
+        main.kotlin.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += 'src/main/java'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets { main { java.srcDirs = ['src/main/java', 'src/main/kotlin/'] } }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    def viewDependencies = rootProject.ext.viewDependencies
+    def diDependencies = rootProject.ext.diDependencies
+    def networkDependencies = rootProject.ext.networkDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile viewDependencies.supportCore
+    compile viewDependencies.supportAppCompat
+    compile viewDependencies.supportDesign
+    compile viewDependencies.googleMaps
+    compile viewDependencies.mapMe
+    compile viewDependencies.mapMeGoogleMaps
+
+    compile appDependencies.multidex
+    compile appDependencies.kotlin
+    compile appDependencies.rxandroid
+    compile appDependencies.rxjava
+    compile appDependencies.gpxParser
+    compile appDependencies.joda
+    compile appDependencies.mapCluster
+
+    compile diDependencies.dagger
+    kapt diDependencies.daggerCompiler
+
+    testCompile testDependencies.junit
+    testCompile testDependencies.mockito
+    testCompile(testDependencies.mockitoKotlin) {
+        exclude module: 'org.mockito'
+    }
+    testCompile testDependencies.assertJ
+    testCompile(testDependencies.assertJAndroid) {
+        exclude group: 'com.android.support'
+    }
+}
