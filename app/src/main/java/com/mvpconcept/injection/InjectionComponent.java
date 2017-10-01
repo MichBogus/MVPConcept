@@ -1,6 +1,6 @@
 package com.mvpconcept.injection;
 
-import com.mvpconcept.WeatherActivity;
+import com.mvpconcept.mvp.WeatherActivity;
 
 import javax.inject.Singleton;
 

@@ -56,6 +56,7 @@ dependencies {
     compile networkDependencies.retrofitRx
     compile networkDependencies.gson
     compile networkDependencies.okhttp
+    compile networkDependencies.interceptor
 
     testCompile testDependencies.junit
     testCompile testDependencies.mockito
