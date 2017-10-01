@@ -8,7 +8,10 @@ import dagger.Component;
 
 @Singleton
 @Component(modules = {
-
+        NetworkModule.class,
+        PresenterModule.class,
+        SchedulerModule.class,
+        ServiceModule.class
 })
 public interface InjectionComponent {
     void inject(WeatherActivity activity);

@@ -16,18 +16,18 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    sourceSets {
-        main.kotlin.srcDirs += 'src/main/kotlin'
-        main.java.srcDirs += 'src/main/java'
-    }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets { main { java.srcDirs = ['src/main/java', 'src/main/kotlin/'] } }
+
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/main/kotlin/']
+        }
+    }
 }
 
 dependencies {
@@ -42,20 +42,20 @@ dependencies {
     compile viewDependencies.supportCore
     compile viewDependencies.supportAppCompat
     compile viewDependencies.supportDesign
-    compile viewDependencies.googleMaps
-    compile viewDependencies.mapMe
-    compile viewDependencies.mapMeGoogleMaps
 
     compile appDependencies.multidex
     compile appDependencies.kotlin
     compile appDependencies.rxandroid
     compile appDependencies.rxjava
-    compile appDependencies.gpxParser
     compile appDependencies.joda
-    compile appDependencies.mapCluster
 
     compile diDependencies.dagger
     kapt diDependencies.daggerCompiler
+
+    compile networkDependencies.retrofit
+    compile networkDependencies.retrofitRx
+    compile networkDependencies.gson
+    compile networkDependencies.okhttp
 
     testCompile testDependencies.junit
     testCompile testDependencies.mockito
