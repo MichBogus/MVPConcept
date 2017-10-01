@@ -7,7 +7,7 @@ ext {
     retrofit_version = '2.2.0'
     mutlidex_version = '1.0.1'
     rx_android_version = '2.0.1'
-    rx_java_version = '2.0.5'
+    rx_java_version = '2.1.4'
     kotlin_mockito_version = '1.4.0'
     mockito_version = '2.2.3'
     junit_version = '4.11'

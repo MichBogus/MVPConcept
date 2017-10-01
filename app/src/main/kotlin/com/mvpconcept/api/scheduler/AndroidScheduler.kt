@@ -1,5 +1,6 @@
 package com.mvpconcept.api.scheduler
 
+import com.mvpconcept.api.subscribee
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.functions.Consumer
@@ -11,7 +12,7 @@ class AndroidScheduler(val subscribeOnScheduler: Scheduler, val observeOnSchedul
         disposables.add(single
                 .subscribeOn(subscribeOnScheduler)
                 .observeOn(observeOnScheduler)
-                .subscribe(onNext, onFail))
+                .subscribee(onNext, onFail))
     }
 
     override fun dispose(tag: Any) {
