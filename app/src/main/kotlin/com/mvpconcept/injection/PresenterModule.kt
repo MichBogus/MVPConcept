@@ -10,6 +10,6 @@ import dagger.Provides
 class PresenterModule {
 
     @Provides
-    fun provideWeatherPresenter(schedulerApi: SchedulerApi, weatherServiceApi: WeatherServiceApi) =
-            WeatherPresenter(schedulerApi, weatherServiceApi)
+    fun provideWeatherPresenter(scheduler: SchedulerApi, weatherServiceApi: WeatherServiceApi) =
+            WeatherPresenter(scheduler, weatherServiceApi)
 }

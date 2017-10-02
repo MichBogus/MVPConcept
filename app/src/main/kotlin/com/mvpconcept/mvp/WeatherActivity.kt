@@ -35,4 +35,12 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
     private fun setListeners() {
         edit_text_city_name.setOnClickListener{ presenter.downloadTemperatureForCity(edit_text_city_name.text.toString()) }
     }
+
+    override fun showTemperatureForLocation(location: String, temperature: String) {
+
+    }
+
+    override fun showError(error: String) {
+
+    }
 }

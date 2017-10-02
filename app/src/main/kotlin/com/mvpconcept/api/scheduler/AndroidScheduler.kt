@@ -12,17 +12,7 @@ class AndroidScheduler(val subscribeOnScheduler: Scheduler, val observeOnSchedul
         disposables.add(single
                 .subscribeOn(subscribeOnScheduler)
                 .observeOn(observeOnScheduler)
-                .subscribee(onNext, onFail))
-
-        single .subscribeOn(subscribeOnScheduler)
-                .observeOn(observeOnScheduler)
-                .doOnSuccess {
-                    val check = 2
-                }
-                .doOnError {
-                    val check = 1
-                }
-                .subscribe()
+                .subscribe(onNext, onFail))
     }
 
     override fun dispose(tag: Any) {

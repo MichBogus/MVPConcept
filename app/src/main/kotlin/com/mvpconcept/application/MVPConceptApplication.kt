@@ -1,10 +1,9 @@
 package com.mvpconcept.application
 
-import android.app.Application
-import com.mvpconcept.injection.DaggerInjectionComponent
-import com.mvpconcept.injection.InjectionComponent
+import android.support.multidex.MultiDexApplication
+import com.mvpconcept.injection.*
 
-class MVPConceptApplication : Application() {
+class MVPConceptApplication : MultiDexApplication() {
 
     lateinit var injector: InjectionComponent
 
@@ -17,7 +16,10 @@ class MVPConceptApplication : Application() {
     private fun buildInjector() {
         injector = DaggerInjectionComponent
                 .builder()
-
+                .networkModule(NetworkModule())
+                .presenterModule(PresenterModule())
+                .schedulerModule(SchedulerModule())
+                .serviceModule(ServiceModule())
                 .build()
     }
 }

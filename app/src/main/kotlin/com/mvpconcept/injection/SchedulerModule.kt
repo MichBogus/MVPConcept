@@ -1,5 +1,6 @@
 package com.mvpconcept.injection
 
+
 import com.mvpconcept.api.scheduler.AndroidScheduler
 import com.mvpconcept.api.scheduler.AndroidSubscriptions
 import com.mvpconcept.api.scheduler.SchedulerApi
@@ -21,4 +22,8 @@ class SchedulerModule {
     @Provides
     fun provideAndroidScheduler(subscriptionsApi: SubscriptionsApi): SchedulerApi =
             AndroidScheduler(Schedulers.io(), AndroidSchedulers.mainThread(), subscriptionsApi)
+
+//    @Provides
+//    fun provideAndroidScheduler(): ApplicationScheduler =
+//            AndroidScheduler(AndroidSchedulers.mainThread(), Schedulers.io())
 }
