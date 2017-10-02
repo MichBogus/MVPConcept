@@ -1,5 +1,6 @@
 package com.mvpconcept.injection
 
+import com.mvpconcept.BuildConfig
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -14,13 +15,15 @@ class NetworkModule {
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient =
-            OkHttpClient.Builder().apply {
-                connectTimeout(CONNECTION_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-                readTimeout(SOCKET_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-
+            if (BuildConfig.DEBUG) {
                 val logging = HttpLoggingInterceptor()
-                logging.level = HttpLoggingInterceptor.Level.BODY
-
-                addInterceptor(logging)
-            }.build()
+                logging.level = HttpLoggingInterceptor.Level.BODY;
+                OkHttpClient.Builder()
+                        .connectTimeout(CONNECTION_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                        .readTimeout(SOCKET_READ_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                        .addInterceptor(logging)
+                        .build()
+            } else {
+                OkHttpClient.Builder().build()
+            }
 }

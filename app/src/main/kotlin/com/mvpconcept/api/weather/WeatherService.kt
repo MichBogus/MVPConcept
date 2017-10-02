@@ -1,6 +1,7 @@
 package com.mvpconcept.api.weather
 
 import io.reactivex.Single
+import retrofit2.Response
 
 class WeatherService(val weatherServiceFeedApi: WeatherServiceFeedApi): WeatherServiceApi {
 

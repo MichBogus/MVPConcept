@@ -8,6 +8,7 @@ ext {
     mutlidex_version = '1.0.1'
     rx_android_version = '2.0.1'
     rx_java_version = '2.1.4'
+    rx_kotlin_version = '2.1.0'
     kotlin_mockito_version = '1.4.0'
     mockito_version = '2.2.3'
     junit_version = '4.11'
@@ -25,6 +26,7 @@ ext {
             kotlin                      : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
             rxandroid                   : "io.reactivex.rxjava2:rxandroid:$rx_android_version",
             rxjava                      : "io.reactivex.rxjava2:rxjava:$rx_java_version",
+            rxkotlin                    : "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version",
             joda                        : "net.danlew:android.joda:$joda_time_version"
     ]
 

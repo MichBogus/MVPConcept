@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
@@ -14,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -26,34 +26,28 @@ android {
                     .asList().toArray()
         }
 
-        debug {
-            minifyEnabled true
-            debuggable true
-            proguardFiles fileTree(dir: 'proguard',
-                    include: ['*.pro'])
-                    .asList().toArray()
-        }
-
-        mock {
-
-        }
+//        debug {
+//            minifyEnabled false
+//            debuggable true
+//            proguardFiles fileTree(dir: 'proguard',
+//                    include: ['*.pro'])
+//                    .asList().toArray()
+//        }
     }
 
     sourceSets {
-        main {
-            java.srcDirs = ['src/main/java', 'src/main/kotlin/']
-        }
+        main.java.srcDirs += 'src/main/kotlin'
     }
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
     def appDependencies = rootProject.ext.appDependencies
     def viewDependencies = rootProject.ext.viewDependencies
     def diDependencies = rootProject.ext.diDependencies
     def networkDependencies = rootProject.ext.networkDependencies
     def testDependencies = rootProject.ext.testDependencies
-
-    compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile viewDependencies.supportCore
     compile viewDependencies.supportAppCompat
@@ -63,6 +57,7 @@ dependencies {
     compile appDependencies.kotlin
     compile appDependencies.rxandroid
     compile appDependencies.rxjava
+    compile appDependencies.rxkotlin
     compile appDependencies.joda
 
     compile diDependencies.dagger

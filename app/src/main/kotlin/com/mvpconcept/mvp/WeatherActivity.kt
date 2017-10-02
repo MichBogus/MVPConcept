@@ -33,6 +33,6 @@ class WeatherActivity : AppCompatActivity(), WeatherView {
     }
 
     private fun setListeners() {
-        edit_text_city_name.addTextChangedListener(SimpleTextWatcher { presenter.downloadTemperatureForCity(it) })
+        edit_text_city_name.setOnClickListener{ presenter.downloadTemperatureForCity(edit_text_city_name.text.toString()) }
     }
 }

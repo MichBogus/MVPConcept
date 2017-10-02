@@ -9,6 +9,6 @@ class WeatherServiceFeed(okHttpClient: OkHttpClient) : BaseService<WeatherRetrof
     override fun getWeatherByCityName(cityName: String): Single<Any> =
             restAdapter().getWeatherByCityName(cityName)
 
-    override fun getGenericParamClass(): Class<WeatherRetrofitApi> =
+    override fun getGenericParameter(): Class<WeatherRetrofitApi> =
             WeatherRetrofitApi::class.java
 }

@@ -1,10 +1,10 @@
 package com.mvpconcept.application
 
-import android.support.multidex.MultiDexApplication
+import android.app.Application
 import com.mvpconcept.injection.DaggerInjectionComponent
 import com.mvpconcept.injection.InjectionComponent
 
-class MVPConceptApplication : MultiDexApplication() {
+class MVPConceptApplication : Application() {
 
     lateinit var injector: InjectionComponent
 
